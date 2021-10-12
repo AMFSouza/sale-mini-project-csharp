@@ -10,12 +10,15 @@ namespace Sale_Mini_Project.Entities
         public int Quantity { get; set; }
         public double Price { get; set; }
 
+        public Product Product { get; set; }
+
         public OrderItem() { }
 
-        public OrderItem(int quantity, double price)
+        public OrderItem(int quantity, double price, Product product)
         {
             Quantity = quantity;
             Price = price;
+            Product = product;
         }
 
         public Double Subtotal()
@@ -25,7 +28,7 @@ namespace Sale_Mini_Project.Entities
 
         public override string ToString()
         {
-            return $"{Quantity}, ${Subtotal().ToString("F2", CultureInfo.InvariantCulture)} ";
+            return $"{Product.Name}, ${Product.Price.ToString("F2", CultureInfo.InvariantCulture)} {Quantity}:, ${Subtotal().ToString("F2", CultureInfo.InvariantCulture)} ";
         }
     }
 }
